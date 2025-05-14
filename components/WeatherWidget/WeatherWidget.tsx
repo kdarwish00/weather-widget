@@ -12,7 +12,6 @@ export type Weather = 'Clear' | 'Frosty' | 'Hot';
 const WeatherWidget = () => {
   const [weather, setWeather] = useState<Weather>('Clear');
   const background = getBackgroundGradient(weather);
-  console.log('Current weather:', weather);
 
   return (
     <div
