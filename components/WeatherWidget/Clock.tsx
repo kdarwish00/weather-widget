@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getCurrentTimeAndWeekday } from '@/utils/weather';
+import { Box, Paper, Typography } from '@mui/material';
 
 const Clock = () => {
   const [time, setTime] = useState('');
@@ -20,12 +21,31 @@ const Clock = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-[90px] right-[90px] rotate-[10deg] text-sm font-mono text-right z-20">
-      <div className="translate-x-2 translate-y-1 bg-black/30 px-2 py-1 rounded">
-        <div>{time}</div>
-        <div>{weekday}</div>
-      </div>
-    </div>
+    <Box
+      position="absolute"
+      bottom={90}
+      right={90}
+      sx={{ transform: 'rotate(10deg)', zIndex: 20 }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          px: 2,
+          py: 1,
+          bgcolor: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(8px)',
+          color: 'grey',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          fontFamily: 'monospace',
+          textAlign: 'right',
+        }}
+      >
+        <Typography variant="body2">{time}</Typography>
+        <Typography variant="caption" sx={{ letterSpacing: 2 }}>
+          {weekday.toUpperCase()}
+        </Typography>
+      </Paper>
+    </Box>
   );
 };
 

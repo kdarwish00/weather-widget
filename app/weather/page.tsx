@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
-import WeatherWidget from '@/components/WeatherWidget/WeatherWidget';
 import LogoutBtn from '@/components/LogoutBtn';
+import Weather from './Weather';
 
 export default async function WeatherPage() {
   const supabase = await createClient();
@@ -18,7 +18,7 @@ export default async function WeatherPage() {
       <div className="absolute top-[0px] right-[0px] z-50">
         <LogoutBtn />
       </div>
-      <WeatherWidget />
+      <Weather />
     </div>
   );
 }

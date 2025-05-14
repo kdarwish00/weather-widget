@@ -1,21 +1,33 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { createClient } from '@/utils/supabase/client';
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 
 export default function LogoutButton() {
-  const router = useRouter();
-  const supabase = createClient();
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push('/login');
-  };
-
   return (
-    <Button onClick={handleLogout} color="info" variant='contained' >
-      Logout
-    </Button>
+    <Box position="absolute" top={20} right={20} zIndex={30}>
+      <form action="/auth/signout" method="POST">
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{
+            px: 3,
+            py: 1,
+            fontWeight: 'bold',
+            fontFamily: 'monospace',
+            color: 'grey',
+            bgcolor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            backdropFilter: 'blur(6px)',
+            textTransform: 'none',
+            '&:hover': {
+              bgcolor: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+            },
+          }}
+        >
+          Logout
+        </Button>
+      </form>
+    </Box>
   );
 }

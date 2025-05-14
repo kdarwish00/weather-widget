@@ -1,8 +1,8 @@
 'use client';
 
+import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { login, signup } from '@/app/login/actions';
-import { useState } from 'react';
 import {
   Box,
   Button,
@@ -10,17 +10,31 @@ import {
   Stack,
   TextField,
   Typography,
+  Alert,
 } from '@mui/material';
 import Link from 'next/link';
+import { useState } from 'react';
 
 type Props = {
   type: 'login' | 'signup';
 };
 
+type FormState =
+  | { error: string }
+  | { success: boolean }
+  | { success?: boolean; error?: string };
+
 export default function AuthForm({ type }: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const action = type === 'login' ? login : signup;
+
+  const [formState, formAction] = useActionState<FormState, FormData>(
+    async (_prevState, formData) => {
+      return await action(formData);
+    },
+    { error: '' }
+  );
 
   return (
     <Box
@@ -32,11 +46,21 @@ export default function AuthForm({ type }: Props) {
       px={2}
     >
       <Paper elevation={4} sx={{ p: 4, width: '100%', maxWidth: 400 }}>
-        <form action={action}>
+        <form action={formAction}>
           <Stack spacing={3}>
             <Typography variant="h5" fontWeight="bold" textAlign="center">
               {type === 'login' ? 'Welcome Back' : 'Create an Account'}
             </Typography>
+
+            {'error' in formState && formState.error && (
+              <Alert severity="error">{formState.error}</Alert>
+            )}
+
+            {'success' in formState && formState.success && (
+              <Alert severity="success">
+                Signup successful! Please check your email to confirm your account.
+              </Alert>
+            )}
 
             <input type="hidden" name="type" value={type} />
 
@@ -67,7 +91,14 @@ export default function AuthForm({ type }: Props) {
         <Box mt={3} textAlign="center">
           {type === 'login' && (
             <Box textAlign="center">
-              <Link href="/forgot-password" style={{ fontSize: '0.875rem', textDecoration: 'underline', color: '#1976d2' }}>
+              <Link
+                href="/forgot-password"
+                style={{
+                  fontSize: '0.875rem',
+                  textDecoration: 'underline',
+                  color: '#1976d2',
+                }}
+              >
                 Forgot password?
               </Link>
             </Box>
