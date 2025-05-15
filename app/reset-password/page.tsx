@@ -3,21 +3,39 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Stack, TextField, Typography, Alert } from '@mui/material';
 
 const supabase = createClient();
 
 export default function UpdatePasswordPage() {
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
     const router = useRouter();
 
     const handleUpdate = async () => {
-        const { error } = await supabase.auth.updateUser({ password });
+        setError('');
+        setSuccess(false);
 
-        if (!error) {
-            router.push('/login');
+        if (password.length < 6) {
+            setError('Password must be at least 6 characters.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        const { error: updateError } = await supabase.auth.updateUser({
+            password,
+        });
+
+        if (updateError) {
+            setError(updateError.message);
         } else {
-            alert(error.message);
+            setSuccess(true);
         }
     };
 
@@ -28,17 +46,50 @@ export default function UpdatePasswordPage() {
                     Set a New Password
                 </Typography>
 
-                <TextField
-                    label="New Password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    fullWidth
-                    required
-                />
-                <Button variant="contained" onClick={handleUpdate}>
-                    Update Password
-                </Button>
+                {error && <Alert severity="error">{error}</Alert>}
+                {success && (
+                    <Alert severity="success">
+                        Password updated successfully. You can now log in.
+                    </Alert>
+                )}
+
+                {!success ? (
+                    <>
+                        <TextField
+                            label="New Password"
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            fullWidth
+                            required
+                        />
+
+                        <TextField
+                            label="Confirm Password"
+                            type="password"
+                            value={confirmPassword}
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            fullWidth
+                            required
+                        />
+
+                        <Button
+                            variant="contained"
+                            onClick={handleUpdate}
+                            sx={{ textTransform: 'none' }}
+                        >
+                            Update Password
+                        </Button>
+                    </>
+                ) : (
+                    <Button
+                        variant="outlined"
+                        onClick={() => router.push('/login')}
+                        sx={{ textTransform: 'none' }}
+                    >
+                        Go to Login
+                    </Button>
+                )}
             </Stack>
         </Box>
     );

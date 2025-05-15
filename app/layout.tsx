@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
     title: 'Weather Widget',
-    description: 'This is a Weather Widget',
+    description: 'This is a Weather Widget homepage. Login or sign up to get started.',
 };
 
 export default function RootLayout({
