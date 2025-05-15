@@ -1,3 +1,6 @@
+'use client';
+
+import { Box } from '@mui/material';
 import { Weather } from './WeatherWidget';
 import ClearObject from './ClearObject';
 import FrostyObject from './FrostyObject';
@@ -16,15 +19,20 @@ const SkyObject = ({ weather }: Props) => {
     weather === 'Frosty' ? '50%' :
     '60%';
 
-  const baseStyle = `absolute z-0 transition-all duration-700 ease-in-out`;
-  const positionStyle = { bottom, left };
-
   return (
-    <div className={baseStyle} style={positionStyle}>
+    <Box
+      position="absolute"
+      zIndex={0}
+      sx={{
+        bottom,
+        left,
+        transition: 'all 0.5s ease-in-out',
+      }}
+    >
       {weather === 'Clear' && <ClearObject />}
       {weather === 'Frosty' && <FrostyObject />}
       {weather === 'Hot' && <HotObject />}
-    </div>
+    </Box>
   );
 };
 

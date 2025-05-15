@@ -1,7 +1,19 @@
+'use client';
+
+import { Box } from '@mui/material';
+
 const HotObject = () => (
-    <div className="relative z-10">
-        <div className="w-[60px] h-[60px] rounded-full rotate-[100deg] bg-[#fff176]" />
-    </div>
+  <Box position="relative" zIndex={10}>
+    <Box
+      sx={{
+        width: '60px',
+        height: '60px',
+        borderRadius: '50%',
+        transform: 'rotate(100deg)',
+        backgroundColor: '#fff176',
+      }}
+    />
+  </Box>
 );
 
 export default HotObject;

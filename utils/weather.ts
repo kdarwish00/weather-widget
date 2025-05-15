@@ -9,11 +9,11 @@ export const cycleWeather = (current: Weather): Weather => {
 export const getBackgroundGradient = (weather: Weather): string => {
    switch (weather) {
       case "Clear":
-         return "bg-gradient-to-b from-[#0F2129] to-[#47334A]";
+         return "linear-gradient(to bottom, #0F2129, #47334A)";
       case "Frosty":
-         return "bg-gradient-to-b from-[#29386f] to-[#b8f5ff]";
+         return "linear-gradient(to bottom, #29386f, #b8f5ff)";
       case "Hot":
-         return "bg-gradient-to-b from-[#ffbd3f] to-[#fff097]";
+         return "linear-gradient(to bottom, #ffbd3f, #fff097)";
       default:
          return "";
    }

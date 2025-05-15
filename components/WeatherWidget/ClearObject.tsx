@@ -1,14 +1,55 @@
+'use client';
+
+import { Box } from '@mui/material';
+
 const ClearObject = () => (
-    <div className="relative z-10">
-        <div
-            className="w-[60px] h-[60px] rounded-full rotate-[100deg]"
-            style={{ boxShadow: '9px 9px 0 0 #BCAE76' }}
+    <Box position="relative" zIndex={10}>
+        <Box
+            sx={{
+                width: 60,
+                height: 60,
+                borderRadius: '50%',
+                transform: 'rotate(100deg)',
+                boxShadow: '9px 9px 0 0 #BCAE76',
+            }}
         />
-        <div className="absolute w-[90px] h-[90px] bg-[#BCAE76] rounded-full opacity-10 top-[-5px] left-[-30px]" />
-        <div className="absolute w-[110px] h-[110px] bg-[#BCAE76] rounded-full opacity-10 top-[-15px] left-[-40px]" />
-        <div className="absolute w-[130px] h-[130px] bg-[#BCAE76] rounded-full opacity-10 top-[-25px] left-[-50px]" />
-    </div>
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 90,
+                height: 90,
+                backgroundColor: '#BCAE76',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -5,
+                left: -30,
+            }}
+        />
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 110,
+                height: 110,
+                backgroundColor: '#BCAE76',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -15,
+                left: -40,
+            }}
+        />
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 130,
+                height: 130,
+                backgroundColor: '#BCAE76',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -25,
+                left: -50,
+            }}
+        />
+    </Box>
 );
 
 export default ClearObject;
-

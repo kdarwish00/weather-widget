@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import LogoutBtn from '@/components/LogoutBtn';
 import Weather from './Weather';
+import { Box } from '@mui/material';
 
 export default async function WeatherPage() {
   const supabase = await createClient();
@@ -14,11 +15,11 @@ export default async function WeatherPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center overflow-hidden relative">
-      <div className="absolute top-[0px] right-[0px] z-50">
+    <Box>
+      <Box sx={{ position: 'absolute', top: 0, right: 0, zIndex: 50 }}>
         <LogoutBtn />
-      </div>
+      </Box>
       <Weather />
-    </div>
+    </Box>
   );
 }

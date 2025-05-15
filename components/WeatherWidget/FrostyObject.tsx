@@ -1,10 +1,55 @@
+'use client';
+
+import { Box } from '@mui/material';
+
 const FrostyObject = () => (
-    <div className="relative z-10">
-        <div className="w-16 h-16 rounded-full rotate-[100deg] bg-[#fff]"></div>
-        <div className="absolute w-[90px] h-[90px] bg-[#fff] rounded-full opacity-10 top-[-5px] left-[-30px]" />
-        <div className="absolute w-[110px] h-[110px] bg-[#fff] rounded-full opacity-10 top-[-15px] left-[-40px]" />
-        <div className="absolute w-[130px] h-[130px] bg-[#fff] rounded-full opacity-10 top-[-25px] left-[-50px]" />
-    </div>
+    <Box position="relative" zIndex={10}>
+        <Box
+            sx={{
+                width: 64,
+                height: 64,
+                borderRadius: '50%',
+                transform: 'rotate(100deg)',
+                backgroundColor: '#fff',
+            }}
+        />
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 90,
+                height: 90,
+                backgroundColor: '#fff',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -15,
+                left: -15,
+            }}
+        />
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 110,
+                height: 110,
+                backgroundColor: '#fff',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -25,
+                left: -25,
+            }}
+        />
+        <Box
+            sx={{
+                position: 'absolute',
+                width: 130,
+                height: 130,
+                backgroundColor: '#fff',
+                borderRadius: '50%',
+                opacity: 0.1,
+                top: -35,
+                left: -35,
+            }}
+        />
+    </Box>
 );
 
 export default FrostyObject;

@@ -1,29 +1,40 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Box } from '@mui/material';
 import WeatherText from './WeatherText';
 import SkyObject from './SkyObject';
 import Ground from './Ground';
 import Clock from './Clock';
-import { cycleWeather, getBackgroundGradient} from '@/utils/weather';
+import { cycleWeather, getBackgroundGradient } from '@/utils/weather';
 
 export type Weather = 'Clear' | 'Frosty' | 'Hot';
 
 const WeatherWidget = () => {
   const [weather, setWeather] = useState<Weather>('Clear');
-  const background = getBackgroundGradient(weather);
 
   return (
-    <div
+    <Box
       onClick={() => setWeather(cycleWeather(weather))}
-      className={`w-full max-w-sm h-[100vh] rounded-xl overflow-hidden relative cursor-pointer transition-all duration-500 text-white ${background}`}
+      sx={{
+        width: '100%',
+        height: '100vh',
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: 'pointer',
+        transition: 'all 0.5s ease',
+        color: 'white',
+        backgroundImage: getBackgroundGradient(weather),
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
       <WeatherText weather={weather} />
       <SkyObject weather={weather} />
       <Ground weather={weather}>
         <Clock />
       </Ground>
-    </div>
+    </Box>
   );
 };
 
