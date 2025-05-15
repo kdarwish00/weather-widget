@@ -5,21 +5,21 @@ import Weather from './Weather';
 import { Box } from '@mui/material';
 
 export default async function WeatherPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    const supabase = await createClient();
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect('/login');
-  }
+    if (!user) {
+        redirect('/login');
+    }
 
-  return (
-    <Box>
-      <Box sx={{ position: 'absolute', top: 0, right: 0, zIndex: 50 }}>
-        <LogoutBtn />
-      </Box>
-      <Weather />
-    </Box>
-  );
+    return (
+        <Box>
+            <Box sx={{ position: 'absolute', top: 0, right: 0, zIndex: 50 }}>
+                <LogoutBtn />
+            </Box>
+            <Weather />
+        </Box>
+    );
 }

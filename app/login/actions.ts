@@ -5,29 +5,29 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 
 export async function login(formData: FormData) {
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-  if (error) {
-    return { error: error.message };
-  }
+    if (error) {
+        return { error: error.message };
+    }
 
-  redirect('/weather');
+    redirect('/weather');
 }
 
 export async function signup(formData: FormData) {
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signUp({ email, password });
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signUp({ email, password });
 
-  if (error) {
-    return { error: error.message };
-  }
+    if (error) {
+        return { error: error.message };
+    }
 
-  return { success: true };
+    return { success: true };
 }

@@ -14,8 +14,8 @@ const Ground = ({ weather, children }: Props) => {
         weather === 'Clear'
             ? 'linear-gradient(to bottom, #2f2b3c, #091B21)'
             : weather === 'Frosty'
-                ? 'linear-gradient(to bottom, #f3ffff, #9af2ff)'
-                : 'linear-gradient(to bottom, #e0d7a4, #e7c77a)';
+              ? 'linear-gradient(to bottom, #f3ffff, #9af2ff)'
+              : 'linear-gradient(to bottom, #e0d7a4, #e7c77a)';
 
     return (
         <>

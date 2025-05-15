@@ -22,13 +22,7 @@ export default function UpdatePasswordPage() {
     };
 
     return (
-        <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            minHeight="100vh"
-            px={2}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" px={2}>
             <Stack spacing={3} maxWidth={400} width="100%">
                 <Typography variant="h5" fontWeight="bold" textAlign="center">
                     Set a New Password
@@ -38,7 +32,7 @@ export default function UpdatePasswordPage() {
                     label="New Password"
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                     fullWidth
                     required
                 />
