@@ -1,11 +1,23 @@
 import { Weather } from '../components/WeatherWidget/WeatherWidget';
 
+/**
+ * Cycles through the predefined weather states in order.
+ *
+ * @param current - The current weather state.
+ * @returns The next weather state in the sequence.
+ */
 export const cycleWeather = (current: Weather): Weather => {
     const order: Weather[] = ['Clear', 'Frosty', 'Hot'];
     const next = order[(order.indexOf(current) + 1) % order.length];
     return next;
 };
 
+/**
+ * Returns a CSS linear gradient string based on the given weather condition.
+ *
+ * @param weather - The current weather condition.
+ * @returns A CSS gradient string representing the background for the given weather.
+ */
 export const getBackgroundGradient = (weather: Weather): string => {
     switch (weather) {
         case 'Clear':
@@ -19,6 +31,11 @@ export const getBackgroundGradient = (weather: Weather): string => {
     }
 };
 
+/**
+ * Retrieves the current time and weekday in the HH:MM:SS format.
+ *
+ * @returns An object containing the formatted current time and weekday.
+ */
 export const getCurrentTimeAndWeekday = (): {
     time: string;
     weekday: string;
