@@ -1,8 +1,7 @@
+// app/weather/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
-import LogoutBtn from '@/components/LogoutBtn';
-import Weather from './Weather';
-import { Box } from '@mui/material';
+import WeatherContainer from '@/components/containers/WeatherContainer';
 
 export default async function WeatherPage() {
     const supabase = await createClient();
@@ -14,12 +13,5 @@ export default async function WeatherPage() {
         redirect('/login');
     }
 
-    return (
-        <Box>
-            <Box sx={{ position: 'absolute', top: 0, right: 0, zIndex: 50 }}>
-                <LogoutBtn />
-            </Box>
-            <Weather />
-        </Box>
-    );
+    return <WeatherContainer />;
 }
