@@ -1,5 +1,5 @@
-import AuthForm from '@/components/AuthForm';
+import LoginContainer from '@/components/containers/LoginContainer';
 
 export default function LoginPage() {
-    return <AuthForm type="login" />;
+    return <LoginContainer />;
 }

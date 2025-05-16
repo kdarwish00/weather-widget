@@ -1,5 +1,5 @@
-import AuthForm from '@/components/AuthForm';
+import SignupContainer from '@/components/containers/SignupContainer';
 
-export default function SignupPage() {
-    return <AuthForm type="signup" />;
+export default function LoginPage() {
+    return <SignupContainer />;
 }
