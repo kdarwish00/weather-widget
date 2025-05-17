@@ -26,27 +26,3 @@ export async function requireUser() {
     // return user;
 }
 
-/**
- * Redirects to /login if no session is found (used for /reset-password)
- */
-export async function requireSession() {
-    const supabase = await createClient();
-    let session;
-    try {
-        const { data, error } = await supabase.auth.getSession();
-        if (error) {
-            console.error('Session error:', error.message);
-            redirect('/login');
-        }
-        session = data.session;
-    } catch (err) {
-        console.error('Failed to get session:', err);
-        redirect('/login');
-    }
-
-    if (!session) {
-        redirect('/login');
-    }
-
-    // return session;
-}
