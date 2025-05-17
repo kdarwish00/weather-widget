@@ -8,7 +8,7 @@ This is a weather-themed authentication app built with **Next.js 14 (App Router)
 
 -  ✅ **Email-based authentication** using Supabase
 -  ✅ **Client-side + Server-side session handling** with middleware
--  ✅ **Secure password reset**
+-  ✅ **Password reset**
 -  ✅ **Dynamic weather widget** that animates weather states (Clear, Frosty, Hot)
 -  ✅ **Protected routes** with reusable auth guards
 -  ✅ **Modular component and container structure**
