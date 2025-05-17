@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getCurrentTimeAndWeekday } from '@/utils/weather';
 import { Box, Paper, Typography } from '@mui/material';
 
 const Clock = () => {
@@ -10,9 +9,18 @@ const Clock = () => {
 
     useEffect(() => {
         const updateTime = () => {
-            const { time, weekday } = getCurrentTimeAndWeekday();
-            setTime(time);
-            setWeekday(weekday);
+            const now = new Date();
+            const locale = navigator.language || 'en-US';
+            const timeString = now.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false,
+            });
+            const weekdayString = now.toLocaleDateString(locale, { weekday: 'long' });
+
+            setTime(timeString);
+            setWeekday(weekdayString);
         };
 
         updateTime();
