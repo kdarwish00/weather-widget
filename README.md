@@ -36,7 +36,7 @@ This is a weather-themed authentication app built with **Next.js 14 (App Router)
     ├── login
     ├── signup
   ├── forgot-password
-  ├── reset-password    # Authenticated page
+  ├── reset-password    
   └── weather           # Authenticated page
 
 /components
