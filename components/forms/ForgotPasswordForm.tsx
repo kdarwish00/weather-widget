@@ -1,14 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-    Box,
-    Button,
-    Paper,
-    Stack,
-    TextField,
-    Typography,
-} from '@mui/material';
+import { Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { createClient } from '@/utils/supabase/client';
 
 export default function ForgotPasswordForm() {

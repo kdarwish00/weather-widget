@@ -3,14 +3,7 @@
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { login, signup } from '@/utils/auth/authActions';
-import {
-    Box,
-    Button,
-    Stack,
-    TextField,
-    Typography,
-    Alert,
-} from '@mui/material';
+import { Box, Button, Stack, TextField, Typography, Alert } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -57,7 +50,7 @@ export default function AuthForm({ type }: Props) {
                     type="email"
                     required
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                     fullWidth
                 />
 
@@ -67,7 +60,7 @@ export default function AuthForm({ type }: Props) {
                     type="password"
                     required
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                     fullWidth
                 />
 
@@ -93,14 +86,20 @@ export default function AuthForm({ type }: Props) {
                 {type === 'login' ? (
                     <Typography variant="body2">
                         Don&apos;t have an account?{' '}
-                        <Link href="/signup" style={{ color: '#1976d2', textDecoration: 'underline' }}>
+                        <Link
+                            href="/signup"
+                            style={{ color: '#1976d2', textDecoration: 'underline' }}
+                        >
                             Sign up
                         </Link>
                     </Typography>
                 ) : (
                     <Typography variant="body2">
                         Already have an account?{' '}
-                        <Link href="/login" style={{ color: '#1976d2', textDecoration: 'underline' }}>
+                        <Link
+                            href="/login"
+                            style={{ color: '#1976d2', textDecoration: 'underline' }}
+                        >
                             Log in
                         </Link>
                     </Typography>
