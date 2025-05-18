@@ -16,6 +16,7 @@ This is a weather-themed authentication app built with **Next.js 14 (App Router)
 - ✅ **Material UI + Tailwind hybrid styling**
 - ✅ **Form validation and error feedback**
 - ✅ **Lazy loading and SSR optimisation**
+- ✅ **Mobile optimisation** - designs are responsive on any screen size
 
 ---
 
