@@ -121,6 +121,7 @@ If the user is missing or invalid, the functions safely redirect to `/login`. Th
 - Implement global `useAuth` context
 - Create **shared UI system** (button, modal, input) using MUI + Tailwind
 - Use an API for weather data so we can create a better experience
+- Implement a custom registered_emails table to reliably track and prevent duplicate sign-ups, allowing for controlled error handling and improved UX without relying on Supabase’s non-descriptive sign-up errors.
 
 ---
 
