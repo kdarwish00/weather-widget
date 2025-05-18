@@ -7,6 +7,7 @@ This is a weather-themed authentication app built with **Next.js 14 (App Router)
 ## 🚀 Features
 
 - ✅ **Email-based authentication** using Supabase
+- ✅ **Email verification** on sign-up — users must verify their email before logging in
 - ✅ **Client-side + Server-side session handling** with middleware
 - ✅ **Password reset**
 - ✅ **Dynamic weather widget** that animates weather states (Clear, Frosty, Hot)
