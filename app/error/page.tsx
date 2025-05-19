@@ -1,5 +1,3 @@
-'use client';
-
 export const metadata = {
     title: 'Error',
     description: 'Something went wrong. Please try again later.',
